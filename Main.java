@@ -27,7 +27,7 @@ public class Main {
 
     private static int evaluarPostfix(String expr, Stack<Integer> stack, Calculator calc) {
 
-        // limpiar la pila por si se reutiliza
+/** limpiar la pila por si se reutiliza */
         while (stack.size() > 0) {
             stack.pop();
         }
@@ -36,11 +36,12 @@ public class Main {
 
         for (String token : tokens) {
 
-            // operando
+            /** operando */
             if (Character.isDigit(token.charAt(0))) {
                 stack.push(Integer.parseInt(token));
             }
-            // operador
+            
+            /** Operador */
             else {
                 int b = stack.pop();
                 int a = stack.pop();
