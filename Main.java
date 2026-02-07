@@ -25,5 +25,39 @@ public class Main {
         }
     }
 
-    //hacer metodo aca
+    private static int evaluarPostfix(String expr, Stack<Integer> stack, Calculator calc) {
+
+        // limpiar la pila por si se reutiliza
+        while (stack.size() > 0) {
+            stack.pop();
+        }
+
+        String[] tokens = expr.split(" ");
+
+        for (String token : tokens) {
+
+            // operando
+            if (Character.isDigit(token.charAt(0))) {
+                stack.push(Integer.parseInt(token));
+            }
+            // operador
+            else {
+                int b = stack.pop();
+                int a = stack.pop();
+
+                int result;
+                switch (token) {
+                    case "+" -> result = calc.sumar(a, b);
+                    case "-" -> result = calc.restar(a, b);
+                    case "*" -> result = calc.multiplicar(a, b);
+                    case "/" -> result = calc.dividir(a, b);
+                    default -> throw new IllegalArgumentException("Operador inválido: " + token);
+                }
+
+                stack.push(result);
+            }
+        }
+
+        return stack.pop();
+    }
 }
