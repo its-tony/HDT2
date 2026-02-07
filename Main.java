@@ -1,3 +1,9 @@
+/**
+ * HDT2 - Calculadora Postfix
+ * @author Anthony Portillo 25615, Alejandro Rustrian 25512
+ */
+
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
